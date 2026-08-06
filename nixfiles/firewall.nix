@@ -7,8 +7,6 @@
   ];
 
   # Open UDP ports
-  networking.firewall.allowedUDPPorts = [
-    22
-  ];
+  networking.firewall.allowedUDPPorts =  [];
 
 }
