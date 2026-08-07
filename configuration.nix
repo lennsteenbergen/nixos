@@ -10,6 +10,7 @@
       ./nixfiles/firewall.nix
       ./nixfiles/gnupg.nix
       ./nixfiles/fonts.nix
+      ./nixfiles/spicetify.nix
     ];
 
   # Bootloader.
