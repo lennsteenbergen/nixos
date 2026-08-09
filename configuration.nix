@@ -11,6 +11,8 @@
       ./nixfiles/gnupg.nix
       ./nixfiles/fonts.nix
       ./nixfiles/spicetify.nix
+      ./nixfiles/steamgraphics.nix
+      ./nixfiles/k3s.nix
     ];
 
   # Bootloader.
