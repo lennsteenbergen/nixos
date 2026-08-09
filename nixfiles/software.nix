@@ -18,6 +18,8 @@
     nh
     python314
     python314Packages.pip
+    rustdesk-flutter
+    steam
     thunderbird
     tree
     usbutils
