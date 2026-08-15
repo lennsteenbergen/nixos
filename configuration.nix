@@ -13,6 +13,7 @@
       ./nixfiles/spicetify.nix
       ./nixfiles/steamgraphics.nix
       ./nixfiles/k3s.nix
+      ./nixfiles/flatpak.nix
     ];
 
   # Bootloader.
