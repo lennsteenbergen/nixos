@@ -1,21 +1,23 @@
-# configuration.nix
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  services.flatpak = {
-    enable = true;
-    remotes = [
-      {
-        name = "flathub";
-        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      }
-    ];
-  };
+  services.flatpak.enable = true;
 
-  # Optional but recommended: lets Flatpak apps find your system's
-  # fonts, icons, and portals correctly
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  systemd.services.flatpak-add-flathub-repo = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "flatpak-system-helper.service" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
   };
 }
