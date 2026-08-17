@@ -28,6 +28,6 @@
     vlc
     vscode
     wget
-    ytmdesktop
+    zed-editor
   ];
 }
