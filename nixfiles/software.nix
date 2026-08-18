@@ -1,3 +1,5 @@
+# Stable packages, for unstable see unstable.nix.
+
 { pkgs, ... }:
 
 {
@@ -5,6 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
+    blender
     brave
     curl
     fastfetch
