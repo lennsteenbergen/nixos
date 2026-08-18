@@ -16,6 +16,7 @@
     gimp
     gnupg
     htop
+    ipe
     jetbrains.idea
     libreoffice-fresh
     neovim
@@ -25,6 +26,7 @@
     python314Packages.pip
     rustdesk-flutter
     steam
+    texliveSmall # Dependency of Ipe
     thunderbird
     tree
     usbutils
