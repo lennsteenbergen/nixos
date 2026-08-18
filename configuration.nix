@@ -5,17 +5,17 @@
     [
       ./hardware-configuration.nix
       ./nixfiles/bluetooth.nix
-      ./nixfiles/software.nix
-      ./nixfiles/nix-command.nix
       ./nixfiles/firewall.nix
-      ./nixfiles/gnupg.nix
+      ./nixfiles/flatpak.nix
       ./nixfiles/fonts.nix
+      ./nixfiles/gnupg.nix
+      ./nixfiles/k3s.nix
+      ./nixfiles/nix-command.nix
+      ./nixfiles/software.nix
       ./nixfiles/spicetify.nix
       ./nixfiles/steamgraphics.nix
-      ./nixfiles/k3s.nix
-      ./nixfiles/flatpak.nix
+      ./nixfiles/unstable.nix
     ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
