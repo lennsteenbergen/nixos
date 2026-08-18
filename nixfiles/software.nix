@@ -7,6 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
+    android-studio
     blender
     brave
     curl
@@ -15,6 +16,7 @@
     gimp
     gnupg
     htop
+    jetbrains.idea
     libreoffice-fresh
     neovim
     nerd-fonts.jetbrains-mono
