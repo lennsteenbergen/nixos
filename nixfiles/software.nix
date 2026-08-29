@@ -6,6 +6,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    _7zz 
     alacritty
     android-studio
     android-tools
@@ -23,6 +24,7 @@
     ipe
     jetbrains.idea
     libreoffice-fresh
+    lm_sensors
     mpv
     mtr
     neovim
@@ -36,7 +38,7 @@
     rustdesk-flutter
     scrcpy
     steam
-    texliveSmall # Dependency of Ipe
+    texliveSmall
     thunderbird
     tree
     usbutils
