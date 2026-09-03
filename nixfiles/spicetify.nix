@@ -8,8 +8,6 @@ in
   ];
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.starryNight;
-    colorScheme = "Base";
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
     ];
