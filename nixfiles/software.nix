@@ -6,10 +6,8 @@
   environment.systemPackages = with pkgs; [
     _7zz 
     alacritty
-    android-studio
     android-tools
     appimage-run
-    blender
     brave
     btop
     curl
@@ -21,13 +19,11 @@
     gnupg
     htop
     ipe
-    jetbrains.idea
-    libreoffice-fresh
+    libreoffice-stable
     lm_sensors
     mpv
     mtr
     neovim
-    nerd-fonts.jetbrains-mono
     nh
     nodejs_24
     oscar
@@ -36,7 +32,6 @@
     python314
     python314Packages.pip
     rustdesk-flutter
-    ryubing
     scrcpy
     steam
     texliveSmall
