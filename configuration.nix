@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./nixfiles/bluetooth.nix
+      ./nixfiles/eduroam.nix
       ./nixfiles/firewall.nix
       ./nixfiles/flatpak.nix
       ./nixfiles/fonts.nix
