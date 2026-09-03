@@ -1,20 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, spicetify-nix, ... }:
 let
-  spicetify-nix = import (builtins.fetchTarball {
-    url = "https://github.com/Gerg-L/spicetify-nix/archive/master.tar.gz";
-  }) { };
-in {
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
+{
   imports = [
     spicetify-nix.nixosModules.spicetify
   ];
-
   programs.spicetify = {
     enable = true;
-
-    theme = spicetify-nix.packages.themes.starryNight;
+    theme = spicePkgs.themes.starryNight;
     colorScheme = "Base";
-
-    enabledExtensions = with spicetify-nix.packages.extensions; [
+    enabledExtensions = with spicePkgs.extensions; [
       adblockify
     ];
   };
