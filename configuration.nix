@@ -16,9 +16,10 @@
       ./nixfiles/spicetify.nix
       ./nixfiles/steamgraphics.nix
     ];
-  # Bootloader.
+  # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "thinkpad-nixos"; # Define hostname
 
