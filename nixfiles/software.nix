@@ -26,6 +26,7 @@
     mtr
     neovim
     nh
+    noctalia
     nodejs_24
     oscar
     prismlauncher
