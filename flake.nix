@@ -10,20 +10,26 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, sops-nix, ... }: {
+  outputs = { self, nixpkgs, spicetify-nix, sops-nix, noctalia, ... }: {
     nixosConfigurations.thinkpad-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = {
-        inherit spicetify-nix;
+        inherit spicetify-nix noctalia;
       };
 
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
         sops-nix.nixosModules.sops
+        noctalia.nixosModules.default
       ];
     };
   };
