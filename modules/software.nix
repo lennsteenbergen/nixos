@@ -19,7 +19,6 @@
     gnupg
     htop
     ipe
-    jetbrains.idea
     libreoffice-stable
     lm_sensors
     mpv
