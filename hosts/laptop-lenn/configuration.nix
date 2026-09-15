@@ -11,6 +11,7 @@
       ../../modules/gnupg.nix
       ../../modules/nix-command.nix
       ../../modules/software.nix
+      ../../modules/sops.nix
       ../../modules/spicetify.nix
       ../../modules/steamgraphics.nix
     ];
