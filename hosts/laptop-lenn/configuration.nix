@@ -14,6 +14,7 @@
       ../../modules/sops.nix
       ../../modules/spicetify.nix
       ../../modules/steamgraphics.nix
+      ../../modules/syncthing.nix
     ];
 
   # Bootloader.
