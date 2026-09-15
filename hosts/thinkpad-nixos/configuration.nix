@@ -8,9 +8,7 @@
       ../../modules/firewall.nix
       ../../modules/eduroam.nix
       ../../modules/flatpak.nix
-      ../../modules/fonts.nix
       ../../modules/gnupg.nix
-      ../../modules/k3s.nix
       ../../modules/nix-command.nix
       ../../modules/software.nix
       ../../modules/spicetify.nix
