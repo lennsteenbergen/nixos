@@ -11,32 +11,26 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, sops-nix, noctalia, ... }: {
+  outputs = { self, nixpkgs, spicetify-nix, sops-nix, ... }: {
     nixosConfigurations.thinkpad-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit spicetify-nix noctalia; };
+      specialArgs = { inherit spicetify-nix; };
       modules = [
         ./hosts/thinkpad-nixos/configuration.nix
         ./hosts/thinkpad-nixos/hardware-configuration.nix
         sops-nix.nixosModules.sops
-        noctalia.nixosModules.default
       ];
     };
 
     nixosConfigurations."laptop-lenn" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit spicetify-nix noctalia; };
+      specialArgs = { inherit spicetify-nix; };
       modules = [
         ./hosts/laptop-lenn/configuration.nix
         ./hosts/laptop-lenn/hardware-configuration.nix
         sops-nix.nixosModules.sops
-        noctalia.nixosModules.default
       ];
     };
   };
