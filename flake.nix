@@ -1,5 +1,5 @@
 {
-  description = "thinkpad-nixos system config";
+  description = "Lenn's NixOS system configs";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -20,14 +20,21 @@
   outputs = { self, nixpkgs, spicetify-nix, sops-nix, noctalia, ... }: {
     nixosConfigurations.thinkpad-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-
-      specialArgs = {
-        inherit spicetify-nix noctalia;
-      };
-
+      specialArgs = { inherit spicetify-nix noctalia; };
       modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
+        ./hosts/thinkpad-nixos/configuration.nix
+        ./hosts/thinkpad-nixos/hardware-configuration.nix
+        sops-nix.nixosModules.sops
+        noctalia.nixosModules.default
+      ];
+    };
+
+    nixosConfigurations."laptop-lenn" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit spicetify-nix noctalia; };
+      modules = [
+        ./hosts/laptop-lenn/configuration.nix
+        ./hosts/laptop-lenn/hardware-configuration.nix
         sops-nix.nixosModules.sops
         noctalia.nixosModules.default
       ];

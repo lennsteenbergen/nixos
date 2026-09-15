@@ -4,17 +4,17 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./nixfiles/bluetooth.nix
-      ./nixfiles/firewall.nix
-      ./nixfiles/eduroam.nix
-      ./nixfiles/flatpak.nix
-      ./nixfiles/fonts.nix
-      ./nixfiles/gnupg.nix
-      ./nixfiles/k3s.nix
-      ./nixfiles/nix-command.nix
-      ./nixfiles/software.nix
-      ./nixfiles/spicetify.nix
-      ./nixfiles/steamgraphics.nix
+      ../../modules/bluetooth.nix
+      ../../modules/firewall.nix
+      ../../modules/eduroam.nix
+      ../../modules/flatpak.nix
+      ../../modules/fonts.nix
+      ../../modules/gnupg.nix
+      ../../modules/k3s.nix
+      ../../modules/nix-command.nix
+      ../../modules/software.nix
+      ../../modules/spicetify.nix
+      ../../modules/steamgraphics.nix
     ];
   # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;
