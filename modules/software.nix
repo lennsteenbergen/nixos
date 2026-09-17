@@ -26,6 +26,7 @@
     neovim
     nh
     nodejs_24
+    openvpn
     oscar
     prismlauncher
     pulseaudio
