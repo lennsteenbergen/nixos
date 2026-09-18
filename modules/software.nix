@@ -23,6 +23,7 @@
     lm_sensors
     mpv
     mtr
+    mullvad-vpn
     neovim
     nh
     nodejs_24
