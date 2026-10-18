@@ -6,12 +6,10 @@
       ./hardware-configuration.nix
       ../../modules/bluetooth.nix
       ../../modules/firewall.nix
-      ../../modules/eduroam.nix
       ../../modules/flatpak.nix
       ../../modules/gnupg.nix
       ../../modules/nix-command.nix
       ../../modules/software.nix
-      ../../modules/sops.nix
       ../../modules/spicetify.nix
       ../../modules/steamgraphics.nix
       ../../modules/syncthing.nix

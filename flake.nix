@@ -8,9 +8,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    sops-nix.url = "github:Mic92/sops-nix";
-
   };
 
   outputs = { self, nixpkgs, spicetify-nix, sops-nix, ... }: {
@@ -20,7 +17,6 @@
       modules = [
         ./hosts/thinkpad-nixos/configuration.nix
         ./hosts/thinkpad-nixos/hardware-configuration.nix
-        sops-nix.nixosModules.sops
       ];
     };
 
@@ -30,7 +26,6 @@
       modules = [
         ./hosts/laptop-lenn/configuration.nix
         ./hosts/laptop-lenn/hardware-configuration.nix
-        sops-nix.nixosModules.sops
       ];
     };
   };
