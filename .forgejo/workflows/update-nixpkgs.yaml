@@ -1,3 +1,4 @@
+
 name: Update Nixpkgs
 
 on:
@@ -8,7 +9,14 @@ on:
 jobs:
   update:
     runs-on: docker
+    container:
+      image: nixos/nix:latest
+
     steps:
+      - name: Install Git
+        run: |
+          nix-env -iA nixpkgs.git
+
       - name: Checkout repository
         uses: https://data.forgejo.org/actions/checkout@v4
         with:
