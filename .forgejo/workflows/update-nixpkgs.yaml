@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Install Node.js and Git
         run: |
-          nix profile install nixpkgs#nodejs nixpkgs#git
+          nix profile install nixpkgs#nodejs nixpkgs#git --extra-experimental-features nix-command
 
       - name: Checkout repository
         uses: https://data.forgejo.org/actions/checkout@v4
@@ -21,4 +21,4 @@ jobs:
           fetch-depth: 0
 
       - name: Update flake inputs
-        run: nix flake update
+        run: nix flake update --extra-experimental-features nix-command
