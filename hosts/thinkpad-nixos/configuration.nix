@@ -10,6 +10,7 @@
       ../../modules/nix-command.nix
       ../../modules/packages.nix
       ../../modules/steamgraphics.nix
+      ../../modules/thinkpad.nix
     ];
   # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;
@@ -22,6 +23,7 @@
   networking.networkmanager.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
+
   # Time zone
   time.timeZone = "Europe/Amsterdam";
 
@@ -67,15 +69,27 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
   # Users
   users.users."lennsteenbergen" = {
     isNormalUser = true;
     description = "Lenn Steenbergen";
     extraGroups = [ "networkmanager" "wheel" ];
+    openssh.authorizedKeys.keys = [
+       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEb3ZzC4yFbqNELzU1y8pXA8lVavpHK9hypAakb1v9dO openpgp:0x81A343B8"
+     ];
   };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   system.stateVersion = "26.05"; # Don't change this for now
 
