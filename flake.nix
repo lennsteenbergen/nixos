@@ -21,7 +21,6 @@
       specialArgs = { inherit spicetify-nix; };
       modules = [
         ./hosts/thinkpad-nixos/configuration.nix
-        ./hosts/thinkpad-nixos/hardware-configuration.nix
         
         home-manager.nixosModules.home-manager
         {
