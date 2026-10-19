@@ -7,12 +7,9 @@
       ../../modules/bluetooth.nix
       ../../modules/firewall.nix
       ../../modules/flatpak.nix
-      ../../modules/gnupg.nix
       ../../modules/nix-command.nix
-      ../../modules/software.nix
-      ../../modules/spicetify.nix
+      ../../modules/packages.nix
       ../../modules/steamgraphics.nix
-      ../../modules/syncthing.nix
     ];
   # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;

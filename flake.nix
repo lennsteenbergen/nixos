@@ -27,7 +27,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.lennsteenbergen = import ./modules/home.nix;
+          home-manager.users.lennsteenbergen = import ./home;
         }
       ];
     };
