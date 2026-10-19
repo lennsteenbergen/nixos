@@ -27,6 +27,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit spicetify-nix; };
           home-manager.users.lennsteenbergen = import ./home;
         }
       ];
