@@ -3,8 +3,7 @@
 {
   programs.git = {
     enable = true;
-    package = pkgs.gitFull; # plain pkgs.git is enough unless you need extras like gitk or send-email
-
+    package = pkgs.gitFull;
     signing = {
       key = "D097C4C349922AC4";
       signByDefault = true;
@@ -15,6 +14,11 @@
       user.email = "ltjst@proton.me";
       pull.rebase = true;
       init.defaultBranch = "main";
+
+      credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
+
+      "credential \"https://github.com\"".username = "lennsteenbergen";
+      "credential \"https://git.lennsteenbergen.dev\"".username = "lennsteenbergen";
     };
   };
 }
