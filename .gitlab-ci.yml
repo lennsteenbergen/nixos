@@ -1,0 +1,67 @@
+
+stages:
+  - update
+
+variables:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
+  GIT_DEPTH: "0"
+
+update-nixpkgs:
+  stage: update
+  image: nixos/nix:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  before_script:
+    - nix profile add nixpkgs#nodejs nixpkgs#gnupg
+    - node --version
+    - git --version
+    - gpg --version
+
+  script:
+    - |
+      set -eu
+
+      export GNUPGHOME="$HOME/.gnupg"
+      mkdir -p "$GNUPGHOME"
+      chmod 700 "$GNUPGHOME"
+
+      gpg --batch --import "$GPG_PRIVATE_KEY"
+
+      printf '%s' "$GPG_PASSPHRASE" > "$GNUPGHOME/passphrase"
+      chmod 600 "$GNUPGHOME/passphrase"
+
+      cat > "$HOME/gpg-sign" <<'EOF'
+      #!/bin/sh
+      exec gpg --batch \
+        --pinentry-mode loopback \
+        --passphrase-file "$HOME/.gnupg/passphrase" \
+        "$@"
+      EOF
+      chmod 700 "$HOME/gpg-sign"
+
+      git config user.name "Lenn Steenbergen"
+      git config user.email "ltjst@proton.me"
+      git config user.signingkey D097C4C349922AC4
+      git config commit.gpgsign true
+      git config gpg.program "$HOME/gpg-sign"
+
+      gpg --batch --list-secret-keys D097C4C349922AC4
+
+    - nix flake update
+
+    - |
+      set -eu
+
+      if git diff --quiet -- flake.lock; then
+        echo "No flake updates available."
+        exit 0
+      fi
+
+      git add flake.lock
+      git commit -S -m "chore: update flake inputs"
+      git verify-commit HEAD
+
+    - |
+      set -eu
+      git push
