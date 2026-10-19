@@ -13,6 +13,7 @@
     oscar
     prismlauncher
     scrcpy
+    spotdl
     thunderbird
     tor-browser
     vesktop
