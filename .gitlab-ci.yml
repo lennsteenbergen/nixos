@@ -64,4 +64,4 @@ update-nixpkgs:
 
     - |
       set -eu
-      git push
+      git push origin HEAD:main
