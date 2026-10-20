@@ -11,6 +11,7 @@
       ../../modules/packages.nix
       ../../modules/steamgraphics.nix
       ../../modules/thinkpad.nix
+      ../../modules/wifi.nix
     ];
   # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;
