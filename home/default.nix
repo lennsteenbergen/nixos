@@ -6,6 +6,7 @@
     ./gpg.nix
     ./packages.nix
     ./spicetify.nix
+    ./oh-my-posh.nix
   ];
 
   home.username = "lennsteenbergen";
