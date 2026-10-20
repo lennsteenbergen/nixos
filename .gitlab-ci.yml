@@ -63,5 +63,14 @@ update-nixpkgs:
       git verify-commit HEAD
 
     - |
-      set -eu
-      git push origin HEAD:main
+          set -eu
+
+                if [ -z "${GITLAB_PUSH_TOKEN:-}" ]; then
+                        echo "GITLAB_PUSH_TOKEN is not configured."
+                                exit 1
+                                      fi
+
+                                            git remote set-url origin \
+                                                    "https://oauth2:${GITLAB_PUSH_TOKEN}@git.lennsteenbergen.dev/lennsteenbergen/nixos.git"
+
+                                                          git push origin HEAD:main
