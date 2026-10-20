@@ -30,9 +30,8 @@ in
       environmentFiles = [ config.sops.templates."wifi.env".path ];
 
       profiles = {
-        # 1. WPA2 Enterprise, PEAP + MSCHAPv2, no CA / anonymous identity
-        school = {
-          connection = { id = "school"; type = "wifi"; autoconnect = true; };
+        eduroam = {
+          connection = { id = "eduroam"; type = "wifi"; autoconnect = true; };
           wifi = { ssid = "eduroam"; mode = "infrastructure"; };
           wifi-security.key-mgmt = "wpa-eap";
           "802-1x" = {
@@ -47,7 +46,7 @@ in
 
         # 2. WPA2/3 Enterprise
         unifi = {
-          connection = { id = "unifi"; type = "wifi"; autoconnect = true; };
+          connection = { id = "UniFi"; type = "wifi"; autoconnect = true; };
           wifi = { ssid = "UniFi"; mode = "infrastructure"; };
           wifi-security.key-mgmt = "wpa-eap";
           "802-1x" = {
@@ -62,8 +61,8 @@ in
 
         # 3. Plain WPA2 personal
         home = {
-          connection = { id = "home"; type = "wifi"; autoconnect = true; };
-          wifi = { ssid = "H369A6A71D"; mode = "infrastructure"; };
+          connection = { id = "H369A6A71AD"; type = "wifi"; autoconnect = true; };
+          wifi = { ssid = "H369A6A71AD"; mode = "infrastructure"; };
           wifi-security = { key-mgmt = "wpa-psk"; psk = "$HOME_PSK"; };
           ipv4.method = "auto";
           ipv6.method = "auto";
