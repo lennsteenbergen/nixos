@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/server/caddy.nix
+      ../../modules/server/continuwuity.nix
       ../../modules/server/disks.nix
       ../../modules/server/gnupg.nix
       ../../modules/server/packages.nix
