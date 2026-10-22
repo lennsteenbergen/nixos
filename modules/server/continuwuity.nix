@@ -6,7 +6,7 @@
     settings.global = {
       server_name = "lennsteenbergen.com";
       address = [ "127.0.0.1" "::1" ];
-      port = 8008;
+      port = [ 8008 ];
       new_user_displayname_suffix = "";
       allow_announcements_check = true;
       trusted_servers = [ "utwente.io" "starstruck.systems" "matrix.org" ];
