@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/server/packages.nix
       ../../modules/server/gnupg.nix
+      ../../modules/server/disks.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
