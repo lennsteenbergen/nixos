@@ -12,6 +12,7 @@
       ../../modules/server/continuwuity.nix
       ../../modules/server/copyparty.nix
       ../../modules/server/disks.nix
+      ../../modules/server/gitlab.nix
       ../../modules/server/gnupg.nix
       ../../modules/server/jellyfin.nix
       ../../modules/server/mc-newnewserver.nix
