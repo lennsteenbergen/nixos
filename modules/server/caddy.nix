@@ -12,9 +12,14 @@
         encode zstd gzip
       '';
 
-      "http://www.lennsteenbergen.com, https://www.lennsteenbergen.com, http://lennsteenbergen.nl, https://lennsteenbergen.nl, http://www.lennsteenbergen.nl, https://www.lennsteenbergen.nl, http://lennsteenbergen.dev, https://lennsteenbergen.dev, http://www.lennsteenbergen.dev, https://www.lennsteenbergen.dev".extraConfig = ''
-        redir https://lennsteenbergen.com{uri} permanent
-      '';
+      "http://www.lennsteenbergen.com, https://www.lennsteenbergen.com, http://lennsteenbergen.nl, https://lennsteenbergen.nl, http://www.lennsteenbergen.nl, https://www.lennsteenbergen.nl, http://lennsteenbergen.dev, https://lennsteenbergen.dev, http://www.lennsteenbergen.dev, https://www.lennsteenbergen.dev" = {
+        logFormat = ''
+          output discard
+        '';
+        extraConfig = ''
+          redir https://lennsteenbergen.com{uri} permanent
+        '';
+      };
     };
   };
 
