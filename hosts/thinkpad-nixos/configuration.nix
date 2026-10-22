@@ -4,14 +4,14 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/bluetooth.nix
-      ../../modules/firewall.nix
-      ../../modules/flatpak.nix
-      ../../modules/nix-command.nix
-      ../../modules/packages.nix
-      ../../modules/steamgraphics.nix
-      ../../modules/thinkpad.nix
-      ../../modules/wifi.nix
+      ../../modules/thinkpad-nixos/bluetooth.nix
+      ../../modules/thinkpad-nixos/firewall.nix
+      ../../modules/thinkpad-nixos/flatpak.nix
+      ../../modules/thinkpad-nixos/nix-command.nix
+      ../../modules/thinkpad-nixos/packages.nix
+      ../../modules/thinkpad-nixos/steamgraphics.nix
+      ../../modules/thinkpad-nixos/thinkpad.nix
+      ../../modules/thinkpad-nixos/wifi.nix
     ];
   # Bootloader & kernel
   boot.loader.systemd-boot.enable = true;
