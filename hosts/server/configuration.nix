@@ -12,14 +12,17 @@
       ../../modules/server/continuwuity.nix
       ../../modules/server/disks.nix
       ../../modules/server/gnupg.nix
+      ../../modules/server/jellyfin.nix
       ../../modules/server/packages.nix
+      ../../modules/server/uptimekuma.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "server"; # Define your hostname.
+  networking.hostName = "server"; # Define hostname
 
   # Enable networking
   networking.networkmanager.enable = true;
