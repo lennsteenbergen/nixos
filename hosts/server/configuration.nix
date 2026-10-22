@@ -14,6 +14,7 @@
       ../../modules/server/disks.nix
       ../../modules/server/gnupg.nix
       ../../modules/server/jellyfin.nix
+      ../../modules/server/mc-newnewserver.nix
       ../../modules/server/networking.nix
       ../../modules/server/nix-command.nix
       ../../modules/server/packages.nix
