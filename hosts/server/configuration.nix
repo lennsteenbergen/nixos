@@ -18,6 +18,7 @@
       ../../modules/server/mc-newnewserver.nix
       ../../modules/server/networking.nix
       ../../modules/server/nix-command.nix
+      ../../modules/server/openssh.nix
       ../../modules/server/packages.nix
       ../../modules/server/uptimekuma.nix
     ];
@@ -63,8 +64,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
-
-  services.openssh.enable = true;
 
   system.stateVersion = "26.05"; # Don't change this for now
 
