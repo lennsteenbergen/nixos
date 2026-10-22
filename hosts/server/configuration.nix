@@ -10,9 +10,12 @@
       ./hardware-configuration.nix
       ../../modules/server/caddy.nix
       ../../modules/server/continuwuity.nix
+      ../../modules/server/copyparty.nix
       ../../modules/server/disks.nix
       ../../modules/server/gnupg.nix
       ../../modules/server/jellyfin.nix
+      ../../modules/server/networking.nix
+      ../../modules/server/nix-command.nix
       ../../modules/server/packages.nix
       ../../modules/server/uptimekuma.nix
     ];
@@ -23,9 +26,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "server"; # Define hostname
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
