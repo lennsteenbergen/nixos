@@ -20,6 +20,7 @@
       ../../modules/server/nix-command.nix
       ../../modules/server/openssh.nix
       ../../modules/server/packages.nix
+      ../../modules/server/somtoday.nix
       ../../modules/server/uptimekuma.nix
     ];
 
