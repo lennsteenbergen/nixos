@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +31,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, copyparty, home-manager, sops-nix, spicetify-nix, ... }: {
+  outputs = { self, nixpkgs, copyparty, helium, home-manager, sops-nix, spicetify-nix, ... }: {
     nixosConfigurations = {
       thinkpad-nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -38,7 +43,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit spicetify-nix; };
+            home-manager.extraSpecialArgs = { inherit spicetify-nix helium; };
             home-manager.users.lennsteenbergen = import ./home;
           }
         ];

@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, helium, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     alacritty
     brave
     btop
@@ -20,5 +20,7 @@
     vlc
     vscode
     zed-editor
+  ]) ++ [
+    helium.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
