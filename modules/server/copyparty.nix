@@ -27,7 +27,7 @@
       path = "/mnt/2tb/copyparty";
       access = {
         r = "*";
-        rw = [ "lennsteenbergen" ];
+        A = [ "lennsteenbergen" ];
       };
     };  
   };
