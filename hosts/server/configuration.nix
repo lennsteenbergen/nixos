@@ -13,13 +13,17 @@
       ../../modules/server/copyparty.nix
       ../../modules/server/disks.nix
       ../../modules/server/gitlab.nix
+      ../../modules/server/gitlab-runner.nix
       ../../modules/server/gnupg.nix
+      ../../modules/server/homarr.nix
       ../../modules/server/jellyfin.nix
+      ../../modules/server/keycloak.nix
       ../../modules/server/mc-newnewserver.nix
       ../../modules/server/networking.nix
       ../../modules/server/nix-command.nix
       ../../modules/server/openssh.nix
       ../../modules/server/packages.nix
+      ../../modules/server/postgresql.nix
       ../../modules/server/somtoday.nix
       ../../modules/server/uptimekuma.nix
     ];
