@@ -1,49 +1,73 @@
 { lib, ... }:
 
 let
-  base = "/home/lennsteenbergen/somtoday";
-  domain = "leerling.nontoday.nl";
+  root = "/home/lennsteenbergen/somtoday";
+  domain = "nontoday.nl";
 
-  versions = [
-    "2.0.0" "2.0.1" "2.0.2" "2.0.3" "2.0.6" "2.0.7"
-    "2.1.0" "2.1.2" "2.1.3" "2.1.4" "2.1.5"
-    "2.2.0" "2.3.0" "2.3.1" "2.3.2" "2.4.0" "2.5.0" "2.6.0" "2.6.1"
-    "2.7.0" "2.8.0" "2.9.0"
-    "2.10.0" "2.10.1" "2.11.0" "2.12.0" "2.13.0" "2.13.1"
-    "2.14.0" "2.15.0" "2.16.0" "2.17.0" "2.18.0" "2.19.0" "2.20.0"
-    "2.21.0" "2.22.0" "2.23.0" "2.24.0" "2.25.0"
-  ];
+  envs = {
+    prod       = [ "leerling.${domain}" ];
+    nightly    = [ "leerling.nightly.${domain}"    "nightly.${domain}" ];
+    test       = [ "leerling.test.${domain}"       "test.${domain}" ];
+    acceptatie = [ "leerling.acceptatie.${domain}" "acceptatie.${domain}" ];
+    inkijk     = [ "leerling.inkijk.${domain}"     "inkijk.${domain}" ];
+    inkijk2    = [ "leerling.inkijk2.${domain}"    "inkijk2.${domain}" ];
+    regressie  = [ "leerling.regressie.${domain}"  "regressie.${domain}" ];
+  };
 
-  subdomain = v: lib.replaceStrings [ "." ] [ "-" ] (lib.removeSuffix ".0" v);
+  scanVersions = name:
+    let dir = "${root}/${name}"; in
+    if !builtins.pathExists dir then [ ]
+    else
+      lib.mapAttrsToList (n: _: lib.removePrefix "Leerling_" n)
+        (lib.filterAttrs
+          (n: t: t == "directory" && lib.hasPrefix "Leerling_" n)
+          (builtins.readDir dir));
 
-  mkHost = v: lib.nameValuePair "${subdomain v}.${domain}" {
+  sortNewest = vs: lib.sort (a: b: lib.versionOlder b a) vs;
+
+  currentDir = name:
+    let
+      vs = scanVersions name;
+      latest = lib.head (sortNewest vs);
+    in
+    if builtins.pathExists "${root}/${name}/current" || vs == [ ]
+    then "${root}/${name}/current"
+    else "${root}/${name}/Leerling_${latest}";
+
+  subdomain = v:
+    lib.replaceStrings [ "." "_" ] [ "-" "-" ] (lib.removeSuffix ".0" v);
+
+  site = dir: {
     extraConfig = ''
       encode zstd gzip
-      root * ${base}/Leerling_${v}
+      root * ${dir}
       try_files {path} /index.html
       file_server
     '';
   };
 
-  versionHosts = lib.listToAttrs (map mkHost versions);
+  mkHosts = name: host: withVersions:
+    { ${host} = site (currentDir name); }
+    // lib.optionalAttrs withVersions (lib.listToAttrs (map
+      (v: lib.nameValuePair "${subdomain v}.${host}"
+        (site "${root}/${name}/Leerling_${v}"))
+      (scanVersions name)));
+
+  mkEnvHosts = name: hosts:
+    lib.mergeAttrsList (lib.imap0 (i: h: mkHosts name h (i == 0)) hosts);
+
+  envHosts = lib.mergeAttrsList (lib.mapAttrsToList mkEnvHosts envs);
 
   extraHosts = {
-    "somtoday.nontoday.nl".extraConfig = ''
+    "somtoday.${domain}".extraConfig = ''
       reverse_proxy localhost:8080
-    '';
-
-    "leerling.nontoday.nl".extraConfig = ''
-      root * ${base}/Leerling_2.25.0
-      encode zstd gzip
-      try_files {path} /index.html
-      file_server
     '';
   };
 in
 {
   services.caddy = {
     enable = true;
-    virtualHosts = versionHosts // extraHosts;
+    virtualHosts = envHosts // extraHosts;
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
